@@ -27,7 +27,7 @@ jobs:
         name:  Copy index.html from s3
         run: |
           aws s3 cp s3://${{ env.BUCKET_NAME }}/index.html ./index.html
-          && cat index.html
+          cat index.html
 
       -
         uses: actions/setup-node@v2
