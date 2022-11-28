@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 import { Vpc, SubnetType, Instance, AmazonLinuxImage, InstanceType } from 'aws-cdk-lib/aws-ec2';
+import { Bucket } from 'aws-cdk-lib/aws-s3';
 
 export class AwsCdkPlaygroundStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -29,6 +30,8 @@ export class AwsCdkPlaygroundStack extends cdk.Stack {
       instanceType: new InstanceType('t2.micro'),
       machineImage: new AmazonLinuxImage(),
     })
+
+    const s3bucket = new Bucket(this, 'lehnertf-delete-me-bucket')
 
   }
 }
