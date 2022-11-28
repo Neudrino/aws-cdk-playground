@@ -27,5 +27,20 @@ jobs:
         name:  Copy index.html from s3
         run: |
           aws s3 cp s3://${{ env.BUCKET_NAME }}/index.html ./index.html
+          && cat index.html
+
       -
-        run: cat index.html
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      -
+        run: npm install
+      -
+        run: npm run cdk synth > myStack.yaml
+      -
+        name: Deploy to AWS CloudFormation
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: lehnertf-delete-me
+          template: myStack.yaml
+          no-fail-on-empty-changeset: "1"
