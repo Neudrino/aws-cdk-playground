@@ -37,7 +37,7 @@ jobs:
         run: npm install
       -
         run: |
-          npm run cdk synth > myStack.yaml
+          npm run cdk synth | tail -n +5 > myStack.yaml
           cat myStack.yaml
       -
         name: Deploy to AWS CloudFormation
