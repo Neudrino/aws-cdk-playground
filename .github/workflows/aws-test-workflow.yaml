@@ -36,7 +36,9 @@ jobs:
       -
         run: npm install
       -
-        run: npm run cdk synth > myStack.yaml
+        run: |
+          npm run cdk synth > myStack.yaml
+          cat myStack.yaml
       -
         name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
