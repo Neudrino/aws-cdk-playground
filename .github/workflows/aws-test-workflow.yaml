@@ -43,7 +43,7 @@ jobs:
         name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
-          name: lehnertf-delete-me
+          name: AwsCdkPlaygroundStack
           template: myStack.yaml
           no-fail-on-empty-changeset: "1"
       -
